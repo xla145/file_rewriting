@@ -9,8 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 设置 marked 选项
   marked.setOptions({
-    breaks: true,  // 支持 GitHub 风格的换行
-    gfm: true      // 启用 GitHub 风格的 Markdown
+    breaks: true,         // 支持 GitHub 风格的换行
+    gfm: true,           // 启用 GitHub 风格的 Markdown
+    mangle: false,
+    headerIds: false,
+    pedantic: false,     // 不要太严格解析
+    smartLists: true,    // 优化列表输出
+    xhtml: false,
+    renderer: new marked.Renderer(),  // 使用默认渲染器
+    sanitize: false      // 允许HTML标签
   });
 
   // 切换标签页
@@ -22,13 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         content.style.display = 'none';
         titleList.style.display = 'none';
         if (!content.nextElementSibling) {
-          const preview = document.createElement('div');
-          preview.className = 'content';
-          preview.innerHTML = marked.parse(content.value);  // 使用 marked 解析
+          const preview = createPreview(content.value);
           content.parentNode.appendChild(preview);
         } else {
           content.nextElementSibling.style.display = 'block';
-          content.nextElementSibling.innerHTML = marked.parse(content.value);  // 使用 marked 解析
+          content.nextElementSibling.innerHTML = marked.parse(content.value || '');
         }
       } else { // 编辑模式
         content.style.display = 'block';
@@ -99,13 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tabBtns[1].classList.remove('active');
             
             if (!content.nextElementSibling) {
-              const preview = document.createElement('div');
-              preview.className = 'content';
-              preview.innerHTML = marked.parse(generatedContent);  // 使用 marked 解析
+              const preview = createPreview(content.value);
               content.parentNode.appendChild(preview);
             } else {
               content.nextElementSibling.style.display = 'block';
-              content.nextElementSibling.innerHTML = marked.parse(generatedContent);  // 使用 marked 解析
+              content.nextElementSibling.innerHTML = marked.parse(content.value || '');
             }
             
             editor.scrollIntoView({ behavior: 'smooth' });
@@ -129,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   content.addEventListener('input', () => {
     if (content.nextElementSibling) {
-      content.nextElementSibling.innerHTML = marked.parse(content.value);  // 使用 marked 解析
+      content.nextElementSibling.innerHTML = marked.parse(content.value || '');
     }
   });
 
@@ -143,3 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 }); 
+
+// 在生成预览内容时，确保内容是有效的 Markdown
+function createPreview(content) {
+  const preview = document.createElement('div');
+  preview.className = 'preview-content';
+  
+  // 确保内容是字符串
+  const markdownContent = String(content || '');
+  
+  // 尝试解析 Markdown
+  try {
+    preview.innerHTML = marked.parse(markdownContent);
+  } catch (error) {
+    console.error('Markdown parsing failed:', error);
+    preview.innerHTML = `<p>${markdownContent}</p>`;
+  }
+  
+  return preview;
+} 

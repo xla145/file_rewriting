@@ -5,6 +5,29 @@
   background: #fff;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 100;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-wrapper {
+  margin-top: 100px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tab-container {
@@ -88,21 +111,20 @@
   margin-top: 20px;
   width: 100%;
   box-sizing: border-box;
-  padding-right: 0;
 }
 
-.content {
-  width: calc(100% - 20px);
+.content, .preview-content {
+  width: 100%;
   min-height: 200px;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  resize: vertical;
   font-size: 14px;
   line-height: 1.6;
   box-sizing: border-box;
-  display: block;
-  margin-right: 20px;
+  margin-right: 0;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .loading-container {
@@ -136,4 +158,141 @@
   padding: 20px;
   background: #ffebee;
   border-radius: 4px;
+}
+
+.preview-content {
+  width: 100%;
+  min-height: 200px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  box-sizing: border-box;
+  margin-right: 0;
+  overflow-wrap: break-word;
+  white-space: normal;
+  word-break: break-all;
+}
+
+/* Markdown 样式 */
+.preview-content h1,
+.preview-content h2,
+.preview-content h3,
+.preview-content h4,
+.preview-content h5,
+.preview-content h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #333;
+}
+
+.preview-content h1 { 
+  font-size: 2em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.preview-content h2 { 
+  font-size: 1.5em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+.preview-content h3 { font-size: 1.25em; }
+.preview-content h4 { font-size: 1em; }
+.preview-content h5 { font-size: 0.875em; }
+.preview-content h6 { font-size: 0.85em; }
+
+.preview-content p {
+  margin-bottom: 16px;
+  white-space: pre-wrap;
+}
+
+.preview-content ul,
+.preview-content ol {
+  padding-left: 2em;
+  margin-bottom: 16px;
+}
+
+.preview-content li {
+  margin-bottom: 0.25em;
+}
+
+.preview-content code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 3px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.preview-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.preview-content pre code {
+  display: block;
+  padding: 16px;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.preview-content blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+  margin: 0 0 16px;
+}
+
+/* 添加链接样式 */
+.preview-content a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.preview-content a:hover {
+  text-decoration: underline;
+}
+
+/* 添加表格样式 */
+.preview-content table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.preview-content table th,
+.preview-content table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.preview-content table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.preview-content table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.preview-content * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* 当编辑器显示时才设置固定高度 */
+.editor.active {
+  height: 600px;
+  overflow-y: auto;
 } 

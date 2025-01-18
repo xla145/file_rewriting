@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>AI 水文生成器</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/marked.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="fixed-header">
     <div class="tab-container">
       <button class="tab-btn active">预览</button>
       <button class="tab-btn">编辑</button>
@@ -16,11 +16,16 @@
       <button id="convertBtn">仿写</button>
       <button id="copyBtn">复制</button>
     </div>
-    <div id="titleList" class="title-list">
-      <!-- 标题列表将由 JavaScript 动态生成 -->
-    </div>
-    <div id="editor" class="editor">
-      <textarea id="content" class="content"></textarea>
+  </div>
+  
+  <div class="container">
+    <div class="content-wrapper">
+      <div id="titleList" class="title-list">
+        <!-- 标题列表将由 JavaScript 动态生成 -->
+      </div>
+      <div id="editor" class="editor">
+        <textarea id="content" class="content"></textarea>
+      </div>
     </div>
   </div>
   <script src="popup.js"></script>

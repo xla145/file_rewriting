@@ -39,7 +39,6 @@ async function genTitle(content) {
         }
         const data = JSON.parse(lineStr);
         if (data.answer) {
-          console.log("收到响应:", data.answer);
           contentArray.push(data.answer);
         }
       } catch (e) {
@@ -99,7 +98,6 @@ async function genContent(title, content) {
         const data = JSON.parse(lineStr);
         if (data.answer) {
           contentArray.push(data.answer.replace(/'/g, ''));
-          console.log("收到响应片段:", data.answer);
         }
       } catch (e) {
         console.error('解析JSON失败:', e);
@@ -108,6 +106,10 @@ async function genContent(title, content) {
   }
 
   const contentStr = contentArray.join('');
+  const markdownMatch = contentStr.match(/```markdown([\s\S]*?)```/);
+  if (markdownMatch && markdownMatch[1]) {
+    return markdownMatch[1].trim();
+  }
   return contentStr;
 }
 

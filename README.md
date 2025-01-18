@@ -29,13 +29,14 @@
 7. 点击"复制"按钮复制文章内容
 
 ## 文件结构
-├── manifest.json # 扩展配置文件
-├── popup.html # 弹出窗口 HTML
-├── popup.js # 弹出窗口脚本
-├── styles.css # 样式文件
-├── background.js # 后台脚本
-├── content.js # 内容脚本
-└── test_dify_api.py # API 测试脚本
+
+manifest.json     # 扩展配置文件
+popup.html       # 弹出窗口 HTML 
+popup.js         # 弹出窗口脚本
+styles.css       # 样式文件
+background.js    # 后台脚本
+content.js       # 内容脚本
+test_dify_api.py # API 测试脚本
 
 ## 技术栈
 
