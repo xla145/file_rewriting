@@ -28,4 +28,40 @@
 6. 切换到编辑模式可以修改文章内容
 7. 点击"复制"按钮复制文章内容
 
-## 文件结构 
+## 文件结构
+├── manifest.json # 扩展配置文件
+├── popup.html # 弹出窗口 HTML
+├── popup.js # 弹出窗口脚本
+├── styles.css # 样式文件
+├── background.js # 后台脚本
+├── content.js # 内容脚本
+└── test_dify_api.py # API 测试脚本
+
+## 技术栈
+
+- HTML/CSS/JavaScript
+- Chrome Extension API
+- Marked.js (Markdown 解析)
+- Dify API (AI 内容生成)
+
+## 注意事项
+
+- 需要配置有效的 API 密钥才能使用
+- 生成内容的质量取决于原页面内容的相关性
+- 建议在生成后检查并适当编辑内容
+
+## 开发计划
+
+- [ ] 添加更多文章模板
+- [ ] 支持自定义 AI 参数
+- [ ] 添加历史记录功能
+- [ ] 支持导出多种格式
+- [ ] 优化生成速度
+
+## 贡献指南
+
+欢迎提交 Issue 和 Pull Request 来帮助改进项目。
+
+## 许可证
+
+MIT License
