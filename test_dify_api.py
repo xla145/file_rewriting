@@ -6,7 +6,7 @@ class DifyAPITester:
         self.api_url = 'https://api.dify.ai/v1/chat-messages'
         self.headers = {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer app-1kTQuObQhQZzouim8MP5vZau',
+            'Authorization': 'Bearer',
         }
 
     def test_gen_title(self, content):
