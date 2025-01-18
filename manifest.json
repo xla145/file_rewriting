@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Article to Markdown Generator",
+  "version": "1.0",
+  "description": "将网页文章转换为Markdown格式并生成新文章",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+} 
