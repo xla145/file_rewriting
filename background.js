@@ -4,7 +4,7 @@ async function genTitle(content) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer app-1kTQuObQhQZzouim8MP5vZau'
+      'Authorization': 'Bearer app-DFAOvT1FcgsYuw3h3M9ewpSE'
     },
     body: JSON.stringify({
       inputs: {

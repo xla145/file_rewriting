@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Article to Markdown Generator",
   "version": "1.0",
-  "description": "将网页文章转换为Markdown格式并生成新文章",
+  "description": "翻译medium文章",
   "permissions": [
     "activeTab",
     "scripting",

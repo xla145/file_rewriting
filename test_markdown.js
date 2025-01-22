@@ -238,9 +238,8 @@ function getPageContent() {
     return markdown;
 }
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'getContent') {
-        const content = getPageContent();
-        sendResponse({ content });
-    }
-}); 
+// 执行转换并在控制台输出结果
+console.log('页面内容的Markdown格式：');
+console.log('------------------------');
+console.log(getPageContent());
+console.log('------------------------'); 

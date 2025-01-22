@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const content = document.getElementById('content');
   const copyBtn = document.getElementById('copyBtn');
   const tabBtns = document.querySelectorAll('.tab-btn');
+  const publishBtn = document.getElementById('publishBtn');
  
 
   // 设置 marked 选项
@@ -144,6 +145,35 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.textContent = originalText;
       }, 2000);
     });
+  });
+
+  // 添加发布按钮点击事件处理
+  publishBtn.addEventListener('click', async () => {
+    try {
+      // 首先复制内容到剪贴板
+      await navigator.clipboard.writeText(content.value);
+      
+      // 显示复制成功的临时提示
+      const originalText = publishBtn.textContent;
+      publishBtn.textContent = '已复制';
+      
+      // 在新标签页中打开 Markdown 编辑器
+      chrome.tabs.create({
+        url: 'https://doocs.github.io/md/'
+      });
+      
+      // 2秒后恢复按钮文字
+      setTimeout(() => {
+        publishBtn.textContent = originalText;
+      }, 2000);
+      
+    } catch (err) {
+      console.error('发布失败:', err);
+      publishBtn.textContent = '发布失败';
+      setTimeout(() => {
+        publishBtn.textContent = '发布';
+      }, 2000);
+    }
   });
 }); 
 
